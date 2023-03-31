@@ -50,7 +50,9 @@ public class Runner {
     private long runningTime(){
         return fTime - sTime;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Runner{" + "name=" + name + ", sTime=" + sTime + ", fTime=" + fTime + ", runningTime=" + runningTime + '}';
+    }
 }
