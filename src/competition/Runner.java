@@ -7,6 +7,50 @@ package competition;
  */
 public class Runner {
     private String name;
-    private int fHours;
-    private int gMinutes;
+    //private int fHours;
+    //private int fMinutes;
+    private long sTime = 0;
+    private long fTime = 0; //pocet sekundach
+    private long runningTime = 0;
+
+    public Runner(String name) {
+        this.name = name;
+    }
+
+    public Runner(String name, long sTime) {
+        this.name = name;
+        this.sTime = sTime;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public long getfTime() {
+        return fTime;
+    }
+
+    public long getsTime() {
+        return sTime;
+    }
+
+    public long getRunningTime() {
+        return runningTime;
+    }
+
+    public void setsTime(long sTime) {
+        this.sTime = sTime;
+    }
+
+    public void setfTime(long fTime) {
+        this.fTime = fTime;
+        this.runningTime = runningTime();
+    }
+    
+    private long runningTime(){
+        return fTime - sTime;
+    }
+    
+    
+    
 }
