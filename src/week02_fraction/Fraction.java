@@ -1,4 +1,4 @@
-package week01_firstobjects;
+package week02_fraction;
 
 public class Fraction {
 
@@ -31,14 +31,14 @@ public class Fraction {
         a = Math.abs(a);
         b = Math.abs(b);
 
-        int i;
+        int min;
         if (a < b) {
-            i = a;
+            min = a;
         } else {
-            i = b;
+            min = b;
         }
 
-        for (i = i; i > 1; i--) {
+        for (int i = min; i > 1; i--) {
             if (a % i == 0 && b % i == 0) {
                 return i;
             }
@@ -55,7 +55,6 @@ public class Fraction {
             this.jmenovatel *= -1;
             this.citatel *= -1;
         }
-
     }
 
     public int getCitatel() {

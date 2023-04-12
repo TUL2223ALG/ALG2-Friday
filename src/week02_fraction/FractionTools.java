@@ -1,7 +1,4 @@
-
-
-package week01_firstobjects;
-
+package week02_fraction;
 
 public final class FractionTools {
     private FractionTools(){
