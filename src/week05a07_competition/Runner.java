@@ -10,12 +10,19 @@ public class Runner implements Comparable<Runner> {
     private long runningTime = 0;
 
     public Runner(String name) {
-        this.name = name;
+        this.name = checkName(name);
     }
     
     public Runner(String name, int dob) {
-        this.name = name;
+        this.name = checkName(name);
         this.dob = dob;
+    }
+    
+    private String checkName(String name){
+        if(!(name.matches("[A-Z][a-z]*"))){
+            throw new IllegalArgumentException(name + " nesplnuje, ze prvni pismeno je velke a pak muzou byt mala pismena");
+        }
+        return name;
     }
 
     public Runner(String name, int dob, long sTime) {
