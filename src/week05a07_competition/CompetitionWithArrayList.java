@@ -10,25 +10,28 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
-public class Competition {
+public class CompetitionWithArrayList {
 
     private String name;
     private long commonSTime = 0;
-    private Runner[] runners;
+    private List<Runner> runners;
     private int currentnRunners = 0;
-
-    public Competition(String name, long commonSTime, int nRunners) {
-        this.name = name;
-        this.commonSTime = commonSTime;
-        runners = new Runner[nRunners];
+    
+    //pretizeny konstruktor, ktery vola jiny konstruktor
+    public CompetitionWithArrayList(String name, long commonSTime) {
+        this(name);
+        this.commonSTime = commonSTime;    
     }
 
-    public Competition(String name, int nRunners) {
+    public CompetitionWithArrayList(String name) {
         this.name = name;
-        runners = new Runner[nRunners];
+        runners = new ArrayList(); //vytvorit instanci
     }
 
     public String getName() {
@@ -40,8 +43,7 @@ public class Competition {
     }
 
     public void addRunner(Runner r) {
-        runners[currentnRunners] = r;
-        currentnRunners++;
+        runners.add(r);
     }
 
     public void addRunner(String name) {
@@ -53,18 +55,26 @@ public class Competition {
         long minTime = Long.MAX_VALUE;
         long runnerTime;
         Runner winner = null;
-        for (int i = 0; i < runners.length; i++) {
-            runnerTime = runners[i].getRunningTime();
+//        for (int i = 0; i < runners.size(); i++) {
+//            runnerTime = runners.get(i).getRunningTime();
+//            if (runnerTime < minTime) {
+//                minTime = runnerTime;
+//                winner = runners.get(i);
+//            }
+//        }
+        //for each
+        for (Runner r : runners) {
+            runnerTime = r.getRunningTime();
             if (runnerTime < minTime) {
                 minTime = runnerTime;
-                winner = runners[i];
+                winner = r;
             }
         }
         return winner;
     }
 
     public String startList() {
-        Arrays.sort(runners, new ComparatorByName()); //nova trida implementujici Comparator
+        Collections.sort(runners, new ComparatorByName()); //nova trida implementujici Comparator
         String s = "";
         for (Runner r : runners) {
             s = s + " " + r.getName() + " " + r.getsTime() + "\n";
@@ -73,7 +83,7 @@ public class Competition {
     }
 
     public String startListv1() {
-        Arrays.sort(runners, new Comparator<Runner>() { //anonymni trida
+        Collections.sort(runners, new Comparator<Runner>() { //anonymni trida
             @Override
             public int compare(Runner o1, Runner o2) {
                 return o1.getName().compareTo(o2.getName());
@@ -87,7 +97,7 @@ public class Competition {
     }
 
     public String startListv2() {
-        Arrays.sort(runners, (Runner o1, Runner o2) -> o1.getName().compareTo(o2.getName())); //lambda vyraz
+        Collections.sort(runners, (Runner o1, Runner o2) -> o1.getName().compareTo(o2.getName())); //lambda vyraz
 
         String s = "";
         for (Runner r : runners) {
@@ -104,7 +114,7 @@ public class Competition {
     };
 
     public String startListv3() {
-        Arrays.sort(runners, COMP_BY_NAME);
+        Collections.sort(runners, COMP_BY_NAME);
         String s = "";
         for (Runner r : runners) {
             s = s + " " + r.getName() + " " + r.getsTime() + "\n";
@@ -128,7 +138,7 @@ public class Competition {
     }
 
     public String resultsList() {
-        Arrays.sort(runners);
+        Collections.sort(runners);
         String s = "";
         for (Runner r : runners) {
             s = s + " " + r.getName() + " " + r.getRunningTime() + "\n";
@@ -176,7 +186,7 @@ public class Competition {
     }
 
     public void saveResultsToFile(File result) throws IOException {
-        Arrays.sort(runners); //compareTo je podle casu
+        Collections.sort(runners); //compareTo je podle casu
         try ( BufferedWriter bw = new BufferedWriter(new FileWriter(result))) {
             for (Runner r : runners) {
                 bw.write(r.getName() + " " + r.getRunningTime());
@@ -186,7 +196,7 @@ public class Competition {
     }
 
     public void saveResultToBinaryFile(File result) throws IOException {
-        Arrays.sort(runners);
+        Collections.sort(runners);
         try ( DataOutputStream out = new DataOutputStream(new FileOutputStream(result))) {
             //int nameLength;
             for (Runner r : runners) {
