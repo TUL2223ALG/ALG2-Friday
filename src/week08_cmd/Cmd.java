@@ -68,5 +68,7 @@ public class Cmd {
             throw new NotValidPath(dir.getName() + " is not a directory");
         }
     }
-    
+    public static void main(String[] args) {
+        File file 
+    }
 }
