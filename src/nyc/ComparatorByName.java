@@ -1,5 +1,5 @@
 
-package Nyc;
+package nyc;
 
 import java.text.Collator;
 import java.util.Comparator;

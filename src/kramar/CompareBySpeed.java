@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Kramar;
+package kramar;
 
 import java.util.Comparator;
 
@@ -10,15 +10,17 @@ import java.util.Comparator;
  *
  * @author ul
  */
-public class CompareByYear implements Comparator<Hurricane>{
+public class CompareBySpeed implements Comparator<Hurricane>{
 
     @Override
     public int compare(Hurricane o1, Hurricane o2) {
-        if(o1.getYear() == o2.getYear()){ //JV pre integre staci return o1.getYear() - o2.getYear()
+        if(o1.getSpeedKnotsPerHour() == o2.getSpeedKnotsPerHour()){
             return 0;
-        } else if(o1.getYear() > o2.getYear()){
+        } else if (o1.getSpeedKnotsPerHour() > o2.getSpeedKnotsPerHour()){
             return -1;
-        } else return 1;
+        } else {
+            return 1;
+        }
     }
     
 }

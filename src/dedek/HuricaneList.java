@@ -1,4 +1,4 @@
-package Dedek;
+package dedek;
 
 import java.util.Collections;
 import java.util.Comparator;

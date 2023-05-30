@@ -1,4 +1,4 @@
-package Dedek;
+package dedek;
 
 import java.io.IOException;
 import java.util.Scanner;

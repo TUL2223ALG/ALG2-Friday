@@ -1,4 +1,4 @@
-package Nyc;
+package nyc;
 
 import java.io.DataInputStream;
 import java.io.EOFException;

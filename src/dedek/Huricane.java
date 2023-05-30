@@ -1,4 +1,4 @@
-package Dedek;
+package dedek;
 
 public class Huricane {
 

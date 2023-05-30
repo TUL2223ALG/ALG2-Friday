@@ -1,4 +1,4 @@
-package Kramar;
+package kramar;
 
 import java.io.File;
 import java.io.IOException;
