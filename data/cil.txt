@@ -1,4 +1,0 @@
-bob,1200
-David,1300
-Cyril,1400
-Alice,1500

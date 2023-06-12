@@ -1,4 +1,0 @@
-Bob 0
-david 0
-Cyril 500
-Alice 600

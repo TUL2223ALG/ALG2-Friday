@@ -1,4 +1,0 @@
-david   1998
-Cyril 2000
-Bob   1996
-Alice   2005
